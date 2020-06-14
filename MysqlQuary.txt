@@ -1,0 +1,27 @@
+create database if not exists userdb;
+
+use userdb;
+
+drop table if exists usertbl;
+create table if not exists usertbl(
+    id varchar(30) primary key,
+    pw varchar(30) not null,
+    nickname varchar(16) not null unique,
+    image longblob,
+    join_date date not null,
+    last_date datetime,
+    ip varchar(30),
+    escape_date date default null,
+    ban varchar(100)
+);
+
+drop table if exists filetbl;
+create table if not exists filetbl(
+    file_no int auto_increment primary key,
+    file_date datetime not null,
+    id varchar(30) not null,
+    title varchar(100) not null,
+    file longblob not null,
+    file_format varchar(15) not null,
+    size int not null
+);
